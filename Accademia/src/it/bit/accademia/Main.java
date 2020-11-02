@@ -11,6 +11,7 @@ import it.bit.accademia.model.LogicException;
 import it.bit.accademia.model.Student;
 import it.bit.accademia.model.data.DataException;
 import it.bit.accademia.model.data.StudentRepository;
+import it.bit.accademia.model.data.jdbc.JdbcHelper;
 import it.bit.accademia.model.data.jdbc.StudentRepositoryJdbc;
 
 public class Main {
@@ -46,20 +47,23 @@ public class Main {
 		
 		StudentRepository sr = new StudentRepositoryJdbc();
 //		
-		sr.add(new Student(1, "gabri", "cognome", "19940502" , "gbada44355355", "gabry@email.com", "3333333", "Milano", "via l", "10210", 1, "diploma"));
+	//	sr.add(new Student(2, "Claudio", "Verdi", "19940502" , "gcala44355355", "claudio@email.com", "3333344", "Milano", "via l", "10210", 1, "diploma"));
 
-		System.out.println(sr.findById(1));
-		sr.delete(1);
-		sr.add(new Student(1, "gabri", "cognome", "19940502" , "gbada44355355", "gabry@email.com", "3333333", "Milano", "via l", "10210", 1, "diploma"));
+	//	System.out.println(sr.findById(1));
+	//	sr.delete(1);
+	//	sr.update(new Student(1, "gabri", "Gognome", "19940502" , "gbada44355355", "gabry@email.com", "3333333", "Milano", "via l", "10210", 1, "diploma"));
 
-		System.out.println(sr.findById(1));
+	//	System.out.println(sr.findById(1));
+	//	System.out.println(sr.findAll());
+	//	System.out.println(sr.findByNameLike("a"));
+	//	sr.iscriviStudente(1, 1);
+		System.out.println(sr.allStudentByCourse(1));
 	}
 
 	public static Collection<Area> findAreaLike(String partialName) {
 		Collection<Area> colArea = new ArrayList<Area>();
 
-		try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/scuolacorsi", "root",
-				"1qaz2wsx");
+		try (Connection con = JdbcHelper.createConnection();
 				Statement st = con.createStatement();
 				ResultSet rs = st.executeQuery("SELECT * FROM aree_abilità WHERE nome LIKE '%" + partialName + "%'"); // Cursore
 																														// temporaneo
@@ -91,8 +95,7 @@ public class Main {
 	public static Collection<Area> betterFindAreaLike(String partialName, String partialDescription) {
 		Collection<Area> colArea = new ArrayList<Area>();
 
-		try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/scuolacorsi", "root",
-				"1qaz2wsx");
+		try (Connection con = JdbcHelper.createConnection();
 				PreparedStatement pst = con.prepareStatement("SELECT * FROM aree_abilità WHERE nome LIKE ? AND descrizione LIKE ?");
 //				ResultSet rs = st.executeQuery("SELECT * FROM aree_abilità WHERE nome LIKE '%" + partialName + "%'"); // Cursore
 

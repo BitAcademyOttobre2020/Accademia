@@ -9,14 +9,14 @@ public class Student {
 	private String CF;
 	private String email;
 	private String telefono;
-	private String città;
+	private String citta;
 	private String via;
 	private String cap;
 	private int idRegione;
 	private String titoloStudio;
 	
 	public Student(int id, String nome, String cognome, String dataDiNascita, String cF, String email, String telefono,
-			String città, String via, String cap, int idRegione, String titoloStudio) {
+			String citta, String via, String cap, int idRegione, String titoloStudio) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -25,7 +25,7 @@ public class Student {
 		CF = cF;
 		this.email = email;
 		this.telefono = telefono;
-		this.città = città;
+		this.citta = citta;
 		this.via = via;
 		this.cap = cap;
 		this.idRegione = idRegione;
@@ -60,8 +60,8 @@ public class Student {
 		return telefono;
 	}
 
-	public String getCittà() {
-		return città;
+	public String getCitta() {
+		return citta;
 	}
 
 	public String getVia() {
@@ -82,8 +82,9 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", dataDiNascita=" + dataDiNascita
-				+ ", CF=" + CF + ", email=" + email + ", telefono=" + telefono + ", città=" + città + ", via=" + via
+		
+		return "\nStudent [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", dataDiNascita=" + dataDiNascita
+				+ ", CF=" + CF + ", email=" + email + ", telefono=" + telefono + ", citta =" + citta + ", via=" + via
 				+ ", cap=" + cap + ", idRegione=" + idRegione + ", titoloStudio=" + titoloStudio + "]";
 	}
 	
