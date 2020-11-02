@@ -16,7 +16,7 @@ import it.bit.accademia.model.Student;
 import it.bit.accademia.model.data.DataException;
 import it.bit.accademia.model.data.StudentRepository;
 
-public class StudentRepositoryJdbc implements StudentRepository {
+public class StudentRepositoryJdbc implements StudentRepository { 
 	
 	@Override
 	public Student add(Student studente) throws DataException {
