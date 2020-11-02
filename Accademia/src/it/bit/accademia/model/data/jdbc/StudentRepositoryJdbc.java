@@ -69,8 +69,37 @@ public class StudentRepositoryJdbc implements StudentRepository {
 
 	@Override
 	public Collection<Student> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/scuolacorsi", "root",
+				"1qaz2wsx");
+				PreparedStatement pst = con.prepareStatement("SELECT * FROM scuolacorsi.Studenti;");
+
+		) {
+
+			try (ResultSet rs = pst.executeQuery()) {
+				rs.next();
+				int idStudente = rs.getInt("id");
+				String nome = rs.getString("nome");
+				String cognome = rs.getString("cognome");
+				String dataDiNascita = rs.getString("data_di_nascita");
+				String CF = rs.getString("CF");
+				String email = rs.getString("email");
+				String telefono = rs.getString("telefono");
+				String città = rs.getString("città");
+				String via = rs.getString("via");
+				String cap = rs.getString("cap");
+				int idRegione = rs.getInt("id_regione");
+				String titoloStudio = rs.getString("titolo_studio");
+
+				Student st = new Student(idStudente, nome, cognome, dataDiNascita, CF, email, telefono, città, via, cap,
+						idRegione, titoloStudio);
+
+				return Optional.ofNullable(st);
+			}
+		} catch (SQLException e) {
+			throw new DataException(e.getMessage(), e);
+		}
+
+		
 	}
 
 	@Override
