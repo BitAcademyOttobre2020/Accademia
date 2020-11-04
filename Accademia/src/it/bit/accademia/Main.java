@@ -11,6 +11,7 @@ import it.bit.accademia.model.LogicException;
 import it.bit.accademia.model.Student;
 import it.bit.accademia.model.data.DataException;
 import it.bit.accademia.model.data.StudentRepository;
+import it.bit.accademia.model.data.jdbc.CourseRepository;
 import it.bit.accademia.model.data.jdbc.JdbcHelper;
 import it.bit.accademia.model.data.jdbc.StudentRepositoryJdbc;
 
@@ -45,7 +46,7 @@ public class Main {
 //		findAreaLike("GRA").forEach(System.out::println);
 //		betterFindAreaLike("GRA","jdbc").forEach(System.out::println);
 		
-		StudentRepository sr = new StudentRepositoryJdbc();
+//		StudentRepository sr = new StudentRepositoryJdbc();
 //		
 	//	sr.add(new Student(2, "Claudio", "Verdi", "19940502" , "gcala44355355", "claudio@email.com", "3333344", "Milano", "via l", "10210", 1, "diploma"));
 
@@ -57,7 +58,10 @@ public class Main {
 	//	System.out.println(sr.findAll());
 	//	System.out.println(sr.findByNameLike("a"));
 	//	sr.iscriviStudente(1, 1);
-		System.out.println(sr.allStudentByCourse(1));
+//		System.out.println(sr.allStudentByCourse(1));
+		
+		CourseRepository cr = new CourseRepository();
+		cr.findAll().forEach(System.out::println);
 	}
 
 	public static Collection<Area> findAreaLike(String partialName) {
