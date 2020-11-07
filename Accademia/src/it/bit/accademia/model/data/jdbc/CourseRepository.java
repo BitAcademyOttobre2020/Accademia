@@ -42,19 +42,20 @@ public class CourseRepository extends GenericRepositoryImpl<Course>{
 	private static void createStatementSetter(PreparedStatement pst, Course c, int key) throws SQLException {
 		pst.setInt(1,c.getId());
 		pst.setString(2,c.getNomeCorso());
-		pst.setInt(3, c.getIdAulaPref());
+		pst.setInt(3, c.getAulaPreferita().getId());
 		pst.setInt(4, c.getCapienza());
 		pst.setInt(5, c.getIscrizioneMin());
 		pst.setBoolean(6, c.isFinanziato());
-		pst.setInt(7, c.getIdAzienda());
+		pst.setInt(7, c.getAzienda().getId());
 		
 	}
 	
 	private Course courseResultSetMap(ResultSet rs) throws SQLException {
-		return new Course(rs.getInt("id"), rs.getString("nome_corso"), rs.getInt("id_aula_pref"),
-				rs.getInt("capienza"), rs.getInt("iscrizioni_min"), rs.getBoolean("finanziato"),
-				rs.getInt("id_azienda"));
-		
+//		return new Course(rs.getInt("id"), rs.getString("nome_corso"), rs.getInt("id_aula_pref"),
+//				rs.getInt("capienza"), rs.getInt("iscrizioni_min"), rs.getBoolean("finanziato"),
+//				rs.getInt("id_azienda"));
+//		
+		return null;
 	}
 
 	private static void updateStatementSetter(PreparedStatement pst, Course c, int key) throws SQLException {
